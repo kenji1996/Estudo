@@ -1,0 +1,83 @@
+-> id retorna identidade (int unica) de um objeto
+
+-> funcoes, modulos e classes sao objetos de primeira classe (sao tratados como os demais objetos)
+
+-> id de 2 intancias de objetos identicos sao diferentes
+
+id(Cachorro()) == id(Cachorro())
+retorna false
+
+-> Quando importamos um arquivo py, estamos executando o código desse arquivo. Um jeito de importar as funções sem executar os códigos de dentro é usar
+ 
+if __name__ == "__main__":
+
+Então:
+
+def myfunction(string, sleeptime, lock, *args):
+    while True:
+        lock.acquire()
+        time.sleep(sleeptime)
+        lock.release()
+        time.sleep(sleeptime)
+
+if __name__ == "__main__":
+    lock = thread.allocate_lock()
+    thread.start_new_thread(myfunction, ("Thread #: 1", 2, lock))
+    thread.start_new_thread(myfunction, ("Thread #: 2", 2, lock))
+
+Se o código acima for importado, a FUNÇÃO myfunction irá ser importada sem a execução do código abaixo
+
+==========================
+
+Construtor:
+
+def __init__(self,atributo1,atributo2):
+    self.atributo1 = atributo1
+    self.atributo2 = atributo2
+
+se atributo1 não tiver valor padrão, o construtor cria um objeto SOMENTE se vier acompanhado de um valor
+
+def __init__(self,atributo1='A',atributo2='A'):
+    self.atributo1 = atributo1
+    self.atributo2 = atributo2
+
+atributo1 possui valor padrão, então Cachorro() cria uma instancia de atributo1=a
+se Cachorro('AAA'), entao atributo1 = 'AAA' e atributo2 = 'A'
+
+==========================
+
+__doc__ evoca comentários de dentro do objeto
+
+def __init__(self,nome,pelo,tamanho):
+        """Alo"""
+        self.pelo = pelo
+        self.tamanho = tamanho
+        self.nome = nome
+
+Cachorro.__init__.__doc__ evoca "Alo"
+
+==========================
+
+Herança :
+
+class Condutores:
+    atributo1..
+
+class Materiais_Ferrosos(Condutores):
+    atributo2
+
+se a = Materiais_Ferrosos(), então ele possui atributo1 e atributo2.
+
+para confirmar se B herda de A, issubclass(B,A) pode ser usado (retorna boolean)
+ou também __base__, que retorna <class __main__.A at 0x00A48030>
+
+==========================
+
+Dá pra multiplicar string por um int:
+
+str1 = Op_Basicas('56')
+str2 = Op_Basicas(34)
+str1 * str2
+'56565656565656565656565656565656565656565656565656565656565656565656'
+
+==========================
